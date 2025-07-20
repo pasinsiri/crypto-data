@@ -20,3 +20,6 @@ SUPABASE_PROJECT_ID = os.environ.get("SUPABASE_PROJECT_ID")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 SUPABASE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/{TABLE_NAME}"
 
+class RateLimitError(Exception):
+    pass
+
