@@ -46,3 +46,21 @@ def fetch_crypto_price(token_list, timestamp):
     else:
         raise Exception(f"API error: {response.status_code}")
 
+def store_in_supabase(price_data, timestamp):
+    headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+    }
+    
+    # timestamp = datetime.now(pytz.timezone("Asia/Bangkok")).isoformat()
+    data = [{
+        "token_id": token,
+        "price": price["usd"],
+        "created_at": str(timestamp)
+    } for token, price in price_data.items()]
+    response = requests.post(SUPABASE_URL, json=data, headers=headers)
+    if response.status_code != 201:
+        print(f"Supabase error: {response.status_code}, {response.text}")
+
