@@ -26,3 +26,23 @@ class RateLimitError(Exception):
 with open(TOKEN_LIST_PATH, 'r') as f:
     token_list = json.load(f)
 
+@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10), retry=retry_if_exception_type(RateLimitError))
+def fetch_crypto_price(token_list, timestamp):
+    params = {
+        "vs_currencies": "usd",
+        "ids": ",".join([token["id"] for token in token_list]),
+        "include_24hr_vol": False,
+        "precision": 6
+    }
+    response = requests.get(BASE_URL, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        print("Saving...")
+        store_in_supabase(data, timestamp)
+    elif response.status_code == 429:
+        retry_after = int(response.headers.get("Retry-After", 10))
+        print(f"Rate limit hit. Waiting {retry_after}s")
+        raise RateLimitError("Rate limit exceeded")
+    else:
+        raise Exception(f"API error: {response.status_code}")
+
