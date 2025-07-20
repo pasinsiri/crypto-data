@@ -10,3 +10,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_excep
 
 load_dotenv()
 
+# * CoinGecko parameters (for public API)
+TOKEN_LIST_PATH = './keys/token_info.json'
+BASE_URL = "https://api.coingecko.com/api/v3/simple/price"
+
