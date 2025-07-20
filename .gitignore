@@ -210,6 +210,7 @@ __marimo__/
 .ssh
 .secrets
 keys/coingecko_coinlist.json
+run_script.sh
 
 # Test Data and Files
 test*
