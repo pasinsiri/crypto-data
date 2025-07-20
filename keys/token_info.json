@@ -1,0 +1,147 @@
+[
+    {
+        "id": "aave",
+        "symbol": "aave",
+        "name": "Aave"
+    },
+    {
+        "id": "cardano",
+        "symbol": "ada",
+        "name": "Cardano"
+    },
+    {
+        "id": "cosmos",
+        "symbol": "atom",
+        "name": "Cosmos Hub"
+    },
+    {
+        "id": "avalanche-2",
+        "symbol": "avax",
+        "name": "Avalanche"
+    },
+    {
+        "id": "binancecoin",
+        "symbol": "bnb",
+        "name": "BNB"
+    },
+    {
+        "id": "bitcoin",
+        "symbol": "btc",
+        "name": "Bitcoin"
+    },
+    {
+        "id": "curve-dao-token",
+        "symbol": "crv",
+        "name": "Curve DAO"
+    },
+    {
+        "id": "dogecoin",
+        "symbol": "doge",
+        "name": "Dogecoin"
+    },
+    {
+        "id": "polkadot",
+        "symbol": "dot",
+        "name": "Polkadot"
+    },
+    {
+        "id": "dydx-chain",
+        "symbol": "dydx",
+        "name": "dYdX"
+    },
+    {
+        "id": "ethereum-classic",
+        "symbol": "etc",
+        "name": "Ethereum Classic"
+    },
+    {
+        "id": "ethereum",
+        "symbol": "eth",
+        "name": "Ethereum"
+    },
+    {
+        "id": "filecoin",
+        "symbol": "fil",
+        "name": "Filecoin"
+    },
+    {
+        "id": "helium",
+        "symbol": "hnt",
+        "name": "Helium"
+    },
+    {
+        "id": "immutable-x",
+        "symbol": "imx",
+        "name": "Immutable"
+    },
+    {
+        "id": "injective-protocol",
+        "symbol": "inj",
+        "name": "Injective"
+    },
+    {
+        "id": "chainlink",
+        "symbol": "link",
+        "name": "Chainlink"
+    },
+    {
+        "id": "litecoin",
+        "symbol": "ltc",
+        "name": "Litecoin"
+    },
+    {
+        "id": "near",
+        "symbol": "near",
+        "name": "NEAR Protocol"
+    },
+    {
+        "id": "pyth-network",
+        "symbol": "pyth",
+        "name": "Pyth Network"
+    },
+    {
+        "id": "thorchain",
+        "symbol": "rune",
+        "name": "THORChain"
+    },
+    {
+        "id": "shiba-inu",
+        "symbol": "shib",
+        "name": "Shiba Inu"
+    },
+    {
+        "id": "havven",
+        "symbol": "snx",
+        "name": "Synthetix Network"
+    },
+    {
+        "id": "solana",
+        "symbol": "sol",
+        "name": "Solana"
+    },
+    {
+        "id": "the-open-network",
+        "symbol": "ton",
+        "name": "Toncoin"
+    },
+    {
+        "id": "tron",
+        "symbol": "trx",
+        "name": "TRON"
+    },
+    {
+        "id": "uniswap",
+        "symbol": "uni",
+        "name": "Uniswap"
+    },
+    {
+        "id": "stellar",
+        "symbol": "xlm",
+        "name": "Stellar"
+    },
+    {
+        "id": "ripple",
+        "symbol": "xrp",
+        "name": "XRP"
+    }
+]
