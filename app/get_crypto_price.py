@@ -64,3 +64,12 @@ def store_in_supabase(price_data, timestamp):
     if response.status_code != 201:
         print(f"Supabase error: {response.status_code}, {response.text}")
 
+if __name__ == "__main__":
+    try:
+        timestamp = datetime.now(pytz.timezone("Asia/Bangkok"))
+        price_data = fetch_crypto_price(token_list, timestamp)
+        if price_data:
+            store_in_supabase(price_data)
+            print(f"Stored cryptocurrency prices for {timestamp.strftime('%d-%m-%Y')}")
+    except Exception as e:
+        print(f"Error: {e}")
