@@ -23,3 +23,6 @@ SUPABASE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/{TABLE_NAME}"
 class RateLimitError(Exception):
     pass
 
+with open(TOKEN_LIST_PATH, 'r') as f:
+    token_list = json.load(f)
+
