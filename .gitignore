@@ -209,3 +209,6 @@ __marimo__/
 # Personal Data
 .ssh
 .secrets
+
+# Test Data and Files
+test*
