@@ -209,6 +209,7 @@ __marimo__/
 # Personal Data
 .ssh
 .secrets
+keys/coingecko_coinlist.json
 
 # Test Data and Files
 test*
