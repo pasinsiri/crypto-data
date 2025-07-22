@@ -37,7 +37,7 @@ def fetch_crypto_price(token_list, timestamp):
     response = requests.get(BASE_URL, params=params)
     if response.status_code == 200:
         data = response.json()
-        print("Saving...")
+        print(f"Saving data at timestamp = {timestamp}")
         store_in_supabase(data, timestamp)
     elif response.status_code == 429:
         retry_after = int(response.headers.get("Retry-After", 10))
