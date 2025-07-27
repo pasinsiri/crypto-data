@@ -211,6 +211,7 @@ __marimo__/
 .secrets
 keys/coingecko_coinlist.json
 run_script.sh
+database
 
 # Test Data and Files
 test*
