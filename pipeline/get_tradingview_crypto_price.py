@@ -27,3 +27,22 @@ response = requests.get(SUPABASE_URL, headers=headers)
 assert response.status_code == 200, f'Supabase error: The GET request returns with status {response.status_code}'
 
 tickers = [r['ticker'] for r in response.json()]
+
+# * Get price data from TradingView
+q = Query() \
+    .set_tickers(*[f'BINANCE:{t}' for t in tickers]) \
+    .where(Column('type') == 'spot') \
+    .select('name', 'open', 'high', 'low', 'close', 'volume') \
+    .get_scanner_data()
+
+# * Extract data, form table, and ingest to Supabase
+raw_df = q[1].copy()
+raw_df['market'] = raw_df['ticker'].apply(lambda x: x.split(':')[0])
+
+# ? find timestamp to stamp in the Supabase table
+dt_now = dt.datetime.now()
+rounded_dt = dt_now.replace(minute=0, second=0, microsecond=0) + dt.timedelta(hours=1)
+print(f'Timestamp = {rounded_dt}')
+raw_df['timestamp'] = rounded_dt
+
+# ? ingest to supabase
