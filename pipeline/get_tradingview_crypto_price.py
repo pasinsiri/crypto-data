@@ -11,10 +11,9 @@ load_dotenv()
 
 # * Load cryptocurrency tickers from Supabase
 # ? setup credentials
-TABLE_NAME = "crypto_tickers"
 SUPABASE_PROJECT_ID = os.environ.get("SUPABASE_PROJECT_ID")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
-SUPABASE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/{TABLE_NAME}"
+SUPABASE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_tickers"
 
 # ? request data from Supabase
 headers = {
