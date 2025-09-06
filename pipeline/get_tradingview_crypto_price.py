@@ -59,9 +59,11 @@ The schema is:
     market
     timestamp
 """
-ingest_data = []
+data_to_insert = []
 for _, row in raw_df.iterrows():
-    ingest_data.append(row.to_dict())
-response = requests.post(TARGET_TABLE_URL, json=ingest_data, headers=headers)
+    data_to_insert.append(row.to_dict())
+response = requests.post(TARGET_TABLE_URL, json=data_to_insert, headers=headers)
 if response.status_code != 201:
     print(f"Supabase error: {response.status_code}, {response.text}")
+
+print(f'Ingestion complete')
