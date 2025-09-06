@@ -33,10 +33,10 @@ q = Query() \
     .set_tickers(*[f'BINANCE:{t}' for t in tickers]) \
     .where(Column('type') == 'spot') \
     .select('name', 'open', 'high', 'low', 'close', 'volume') \
-    .get_scanner_data_raw()
+    .get_scanner_data()
 
 # * Extract data, form table, and ingest to Supabase
-raw_df = q['data']
+raw_df = q[1]
 raw_df['market'] = raw_df['ticker'].apply(lambda x: x.split(':')[0])
 
 # ? find timestamp to stamp in the Supabase table
