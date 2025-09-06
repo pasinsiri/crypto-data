@@ -46,3 +46,15 @@ print(f'Timestamp = {rounded_dt}')
 raw_df['timestamp'] = rounded_dt
 
 # ? ingest to supabase
+"""
+The schema is:
+    ticker varchar(20)
+    name varchar(20)
+    open float
+    high
+    low
+    close
+    volume
+    market
+    timestamp
+"""
