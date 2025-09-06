@@ -43,7 +43,7 @@ raw_df['market'] = raw_df['ticker'].apply(lambda x: x.split(':')[0])
 dt_now = dt.datetime.now()
 rounded_dt = dt_now.replace(minute=0, second=0, microsecond=0) + dt.timedelta(hours=1)
 print(f'Timestamp = {rounded_dt}')
-raw_df['timestamp'] = rounded_dt
+raw_df['timestamp'] = str(rounded_dt)
 
 # ? convert the pandas dataframe to the ingestion format
 # ? and ingest to supabase
