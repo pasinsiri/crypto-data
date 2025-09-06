@@ -59,11 +59,9 @@ The schema is:
     market
     timestamp
 """
-data = [{
-    "token_id": token,
-    "price": price["usd"],
-    "created_at": str(timestamp)
-} for token, price in price_data.items()]
-response = requests.post(TARGET_TABLE_URL, json=data, headers=headers)
+ingest_data = []
+for _, row in raw_df.iterrows():
+    ingest_data.append(row.to_dict())
+response = requests.post(TARGET_TABLE_URL, json=ingest_data, headers=headers)
 if response.status_code != 201:
     print(f"Supabase error: {response.status_code}, {response.text}")
