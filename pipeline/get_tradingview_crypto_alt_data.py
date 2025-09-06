@@ -6,3 +6,5 @@ import os
 import tradingview_screener as tvs
 from tradingview_screener import Query, Column, And, Or, col
 from dotenv import load_dotenv
+
+load_dotenv()
