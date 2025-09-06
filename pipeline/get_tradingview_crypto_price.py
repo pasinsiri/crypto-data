@@ -13,7 +13,7 @@ load_dotenv()
 # ? setup credentials
 SUPABASE_PROJECT_ID = os.environ.get("SUPABASE_PROJECT_ID")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
-SUPABASE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_tickers"
+TICKERS_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_tickers"
 
 # ? request data from Supabase
 headers = {
@@ -22,7 +22,7 @@ headers = {
     "Content-Type": "application/json",
     "Prefer": "return=minimal"
 }
-response = requests.get(SUPABASE_URL, headers=headers)
+response = requests.get(TICKERS_URL, headers=headers)
 assert response.status_code == 200, f'Supabase error: The GET request returns with status {response.status_code}'
 
 tickers = [r['ticker'] for r in response.json()]
