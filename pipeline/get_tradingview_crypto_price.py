@@ -66,4 +66,4 @@ response = requests.post(TARGET_TABLE_URL, json=data_to_insert, headers=headers)
 if response.status_code != 201:
     print(f"Supabase error: {response.status_code}, {response.text}")
 
-print(f'Ingestion complete')
+print(f'Task completed')
