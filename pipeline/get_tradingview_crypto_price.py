@@ -45,7 +45,8 @@ rounded_dt = dt_now.replace(minute=0, second=0, microsecond=0) + dt.timedelta(ho
 print(f'Timestamp = {rounded_dt}')
 raw_df['timestamp'] = rounded_dt
 
-# ? ingest to supabase
+# ? convert the pandas dataframe to the ingestion format
+# ? and ingest to supabase
 """
 The schema is:
     ticker varchar(20)
