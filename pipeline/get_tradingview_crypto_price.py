@@ -14,6 +14,7 @@ load_dotenv()
 SUPABASE_PROJECT_ID = os.environ.get("SUPABASE_PROJECT_ID")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 TICKERS_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_tickers"
+TARGET_TABLE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_price_hourly"
 
 # ? request data from Supabase
 headers = {
@@ -32,10 +33,10 @@ q = Query() \
     .set_tickers(*[f'BINANCE:{t}' for t in tickers]) \
     .where(Column('type') == 'spot') \
     .select('name', 'open', 'high', 'low', 'close', 'volume') \
-    .get_scanner_data()
+    .get_scanner_data_raw()
 
 # * Extract data, form table, and ingest to Supabase
-raw_df = q[1].copy()
+raw_df = q['data']
 raw_df['market'] = raw_df['ticker'].apply(lambda x: x.split(':')[0])
 
 # ? find timestamp to stamp in the Supabase table
@@ -57,3 +58,11 @@ The schema is:
     market
     timestamp
 """
+data = [{
+    "token_id": token,
+    "price": price["usd"],
+    "created_at": str(timestamp)
+} for token, price in price_data.items()]
+response = requests.post(TARGET_TABLE_URL, json=data, headers=headers)
+if response.status_code != 201:
+    print(f"Supabase error: {response.status_code}, {response.text}")
