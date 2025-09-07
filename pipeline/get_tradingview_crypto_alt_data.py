@@ -45,3 +45,25 @@ print(f'Timestamp = {dt_now}')
 raw_df['timestamp'] = str(dt_now_rounded)
 raw_df['created_at'] = str(dt_now)
 
+# ? convert the pandas dataframe to the ingestion format
+# ? and ingest to supabase
+"""
+The schema is:
+    ticker varchar
+    name varchar
+    open float
+    high
+    low
+    close
+    volume
+    market
+    timestamp
+"""
+data_to_insert = []
+for _, row in raw_df.iterrows():
+    data_to_insert.append(row.to_dict())
+response = requests.post(TARGET_TABLE_URL, json=data_to_insert, headers=headers)
+if response.status_code != 201:
+    print(f"Supabase error: {response.status_code}, {response.text}")
+
+print(f'Task completed')
