@@ -33,3 +33,8 @@ q = Query() \
     .set_tickers(*[f'CRYPTOCAP:{t}' for t in tickers]) \
     .select('name', 'open', 'high', 'low', 'close', 'volume') \
     .get_scanner_data()
+
+# * Extract data, form table, and ingest to Supabase
+raw_df = q[1]
+raw_df['market'] = raw_df['ticker'].apply(lambda x: x.split(':')[0])
+
