@@ -15,3 +15,13 @@ SUPABASE_PROJECT_ID = os.environ.get("SUPABASE_PROJECT_ID")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 TICKERS_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_alt_tickers"
 TARGET_TABLE_URL = f"https://{SUPABASE_PROJECT_ID}.supabase.co/rest/v1/crypto_alt_data"
+
+# ? request data from Supabase
+headers = {
+    "apikey": SUPABASE_KEY,
+    "Authorization": f"Bearer {SUPABASE_KEY}",
+    "Content-Type": "application/json",
+    "Prefer": "return=minimal"
+}
+response = requests.get(TICKERS_URL, headers=headers)
+assert response.status_code == 200, f'Supabase error: The GET request returns with status {response.status_code}'
