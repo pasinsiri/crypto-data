@@ -50,8 +50,8 @@ raw_df['created_at'] = str(dt_now)
 # ? and ingest to supabase
 """
 The schema is:
-    ticker varchar(20)
-    name varchar(20)
+    ticker varchar
+    name varchar
     open float
     high
     low
