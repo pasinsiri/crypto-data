@@ -25,3 +25,11 @@ headers = {
 }
 response = requests.get(TICKERS_URL, headers=headers)
 assert response.status_code == 200, f'Supabase error: The GET request returns with status {response.status_code}'
+
+tickers = [r['ticker'] for r in response.json()]
+
+# * Get price data from TradingView
+q = Query() \
+    .set_tickers(*[f'CRYPTOCAP:{t}' for t in tickers]) \
+    .select('name', 'open', 'high', 'low', 'close', 'volume') \
+    .get_scanner_data()
